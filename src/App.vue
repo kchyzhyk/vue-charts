@@ -1,15 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <AreaChart />
+  <DonutChart />
+  <LineChart />
+  <BubbleChart />
+  <PolarChart />
+  <RadarChart />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import AreaChart from "@/components/AreaChart";
+import DonutChart from "@/components/DonutChart";
+import LineChart from "@/components/LineChart";
+import BubbleChart from "@/components/BubbleChart";
+import PolarChart from "@/components/PolarChart";
+import RadarChart from "@/components/RadarChart";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AreaChart,
+    DonutChart,
+    LineChart,
+    BubbleChart,
+    PolarChart,
+    RadarChart
   }
 }
 </script>
