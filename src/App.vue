@@ -1,22 +1,27 @@
 <template>
-  <BarChart :chart-data="chartData"/>
-  <DonutChart :chart-data="chartData"/>
-  <LineChart :chart-data="chartData"/>
-  <PolarChart :chart-data="chartData"/>
+  <div class="main">
+    <BarChart :chart-data="chartData"
+              :chart-options="chartOptions"
+    />
+    <DonutChart :chart-data="chartData"
+                :chart-options="chartOptions"
+    />
+    <LineChart :chart-data="chartData"
+                :chart-options="chartOptions"
+    />
+  </div>
 </template>
 
 <script>
 import BarChart from "@/components/BarChart";
 import DonutChart from "@/components/DonutChart";
 import LineChart from "@/components/LineChart";
-import PolarChart from "@/components/PolarChart";
 export default {
   name: 'App',
   components: {
     BarChart,
     DonutChart,
-    LineChart,
-    PolarChart
+    LineChart
   },
   props: {
     chartId: {
@@ -52,11 +57,8 @@ export default {
     return {
       chartData: {
         labels: [ 'January', 'February', 'March' ],
-        datasets: [ {label: 'First Column',  data: [40, 80, 120],
-          backgroundColor: [ '#f87979', '#000', '#f11' ]
-        }, ]
+        datasets: [ { data: [35, 20, 12], backgroundColor: ['#000', '#f71', '#f31'] } ]
       },
-
       chartOptions: {
         responsive: true
       }
@@ -64,3 +66,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.main {
+  padding: 30px;
+}
+</style>
