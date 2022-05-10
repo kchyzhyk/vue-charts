@@ -1,40 +1,66 @@
 <template>
-  <AreaChart />
-  <DonutChart />
-  <LineChart />
-  <BubbleChart />
-  <PolarChart />
-  <RadarChart />
+  <BarChart :chart-data="chartData"/>
+  <DonutChart :chart-data="chartData"/>
+  <LineChart :chart-data="chartData"/>
+  <PolarChart :chart-data="chartData"/>
 </template>
 
 <script>
-
-import AreaChart from "@/components/AreaChart";
+import BarChart from "@/components/BarChart";
 import DonutChart from "@/components/DonutChart";
 import LineChart from "@/components/LineChart";
-import BubbleChart from "@/components/BubbleChart";
 import PolarChart from "@/components/PolarChart";
-import RadarChart from "@/components/RadarChart";
 export default {
   name: 'App',
   components: {
-    AreaChart,
+    BarChart,
     DonutChart,
     LineChart,
-    BubbleChart,
-    PolarChart,
-    RadarChart
+    PolarChart
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'bar-chart'
+    },
+    datasetIdKey: {
+      type: String,
+      default: 'label'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  data() {
+    return {
+      chartData: {
+        labels: [ 'January', 'February', 'March' ],
+        datasets: [ {label: 'First Column',  data: [40, 80, 120],
+          backgroundColor: [ '#f87979', '#000', '#f11' ]
+        }, ]
+      },
+
+      chartOptions: {
+        responsive: true
+      }
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
